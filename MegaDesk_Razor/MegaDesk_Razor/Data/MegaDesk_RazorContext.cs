@@ -13,9 +13,6 @@ namespace MegaDesk_Razor.Models
             : base(options)
         {
         }
-
-        public DbSet<MegaDesk_Razor.Models.Desk> Desk { get; set; }
-
         public DbSet<MegaDesk_Razor.Models.DeskQuote> DeskQuote { get; set; }
     }
 }

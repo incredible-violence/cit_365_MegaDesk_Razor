@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MegaDesk_Razor.Migrations
 {
     [DbContext(typeof(MegaDesk_RazorContext))]
-    [Migration("20190307043021_Initial")]
+    [Migration("20190307065532_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,34 +21,6 @@ namespace MegaDesk_Razor.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("MegaDesk_Razor.Models.Desk", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Length")
-                        .IsRequired()
-                        .HasMaxLength(30);
-
-                    b.Property<DateTime>("LogDate");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(60);
-
-                    b.Property<string>("Notes")
-                        .IsRequired()
-                        .HasMaxLength(100);
-
-                    b.Property<decimal>("Width")
-                        .HasColumnType("decimal(18, 2)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Desk");
-                });
-
             modelBuilder.Entity("MegaDesk_Razor.Models.DeskQuote", b =>
                 {
                     b.Property<int>("ID")
@@ -56,6 +28,8 @@ namespace MegaDesk_Razor.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CustomerName");
+
+                    b.Property<int>("DeskID");
 
                     b.Property<DateTime>("OrderDate");
 
