@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using MegaDesk_Razor.Models;
 
 namespace MegaDesk_Razor
 {
@@ -33,6 +35,9 @@ namespace MegaDesk_Razor
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<MegaDesk_RazorContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("MegaDesk_RazorContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
