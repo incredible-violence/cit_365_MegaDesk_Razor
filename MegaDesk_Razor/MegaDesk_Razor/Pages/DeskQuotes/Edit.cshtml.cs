@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MegaDesk_Razor.Models;
 
-namespace MegaDesk_Razor.Pages.Desks
+namespace MegaDesk_Razor.Pages.DeskQuotes
 {
     public class EditModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace MegaDesk_Razor.Pages.Desks
         }
 
         [BindProperty]
-        public Desk Desk { get; set; }
+        public DeskQuote DeskQuote { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,9 +29,9 @@ namespace MegaDesk_Razor.Pages.Desks
                 return NotFound();
             }
 
-            Desk = await _context.Desk.FirstOrDefaultAsync(m => m.ID == id);
+            DeskQuote = await _context.DeskQuote.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Desk == null)
+            if (DeskQuote == null)
             {
                 return NotFound();
             }
@@ -45,7 +45,7 @@ namespace MegaDesk_Razor.Pages.Desks
                 return Page();
             }
 
-            _context.Attach(Desk).State = EntityState.Modified;
+            _context.Attach(DeskQuote).State = EntityState.Modified;
 
             try
             {
@@ -53,7 +53,7 @@ namespace MegaDesk_Razor.Pages.Desks
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!DeskExists(Desk.ID))
+                if (!DeskQuoteExists(DeskQuote.ID))
                 {
                     return NotFound();
                 }
@@ -66,9 +66,9 @@ namespace MegaDesk_Razor.Pages.Desks
             return RedirectToPage("./Index");
         }
 
-        private bool DeskExists(int id)
+        private bool DeskQuoteExists(int id)
         {
-            return _context.Desk.Any(e => e.ID == id);
+            return _context.DeskQuote.Any(e => e.ID == id);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using MegaDesk_Razor.Models;
 
 namespace MegaDesk_Razor.Models
 {
@@ -14,5 +15,7 @@ namespace MegaDesk_Razor.Models
         }
 
         public DbSet<MegaDesk_Razor.Models.Desk> Desk { get; set; }
+
+        public DbSet<MegaDesk_Razor.Models.DeskQuote> DeskQuote { get; set; }
     }
 }

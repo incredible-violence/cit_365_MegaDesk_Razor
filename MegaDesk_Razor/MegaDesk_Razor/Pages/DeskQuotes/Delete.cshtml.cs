@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MegaDesk_Razor.Models;
 
-namespace MegaDesk_Razor.Pages.Desks
+namespace MegaDesk_Razor.Pages.DeskQuotes
 {
     public class DeleteModel : PageModel
     {
@@ -19,7 +19,7 @@ namespace MegaDesk_Razor.Pages.Desks
         }
 
         [BindProperty]
-        public Desk Desk { get; set; }
+        public DeskQuote DeskQuote { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,9 +28,9 @@ namespace MegaDesk_Razor.Pages.Desks
                 return NotFound();
             }
 
-            Desk = await _context.Desk.FirstOrDefaultAsync(m => m.ID == id);
+            DeskQuote = await _context.DeskQuote.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Desk == null)
+            if (DeskQuote == null)
             {
                 return NotFound();
             }
@@ -44,11 +44,11 @@ namespace MegaDesk_Razor.Pages.Desks
                 return NotFound();
             }
 
-            Desk = await _context.Desk.FindAsync(id);
+            DeskQuote = await _context.DeskQuote.FindAsync(id);
 
-            if (Desk != null)
+            if (DeskQuote != null)
             {
-                _context.Desk.Remove(Desk);
+                _context.DeskQuote.Remove(DeskQuote);
                 await _context.SaveChangesAsync();
             }
 

@@ -1,5 +1,5 @@
 ﻿@page
-@model MegaDesk_Razor.Pages.Desks.DetailsModel
+@model MegaDesk_Razor.Pages.DeskQuotes.DetailsModel
 
 @{
     ViewData["Title"] = "Details";
@@ -8,12 +8,12 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Desk</h4>
+    <h4>DeskQuote</h4>
     <hr />
     <dl class="dl-horizontal">
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Desk.ID">Edit</a> |
+    <a asp-page="./Edit" asp-route-id="@Model.DeskQuote.ID">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>

@@ -1,5 +1,5 @@
 ﻿@page
-@model MegaDesk_Razor.Pages.Desks.IndexModel
+@model MegaDesk_Razor.Pages.DeskQuotes.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -17,7 +17,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Desk) {
+@foreach (var item in Model.DeskQuote) {
         <tr>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |

@@ -9,13 +9,13 @@ namespace MegaDesk_Razor.Models
     public class DeskQuote
     {
         public int ID { get; set; }
-        private string CustomerName { get; set; }
+        public string CustomerName { get; set; }
 
         [DataType(DataType.Date)]
-        private DateTime OrderDate { get; set; }
+        public DateTime OrderDate { get; set; }
 
-        private Desk newDesk = new Desk();
-        private int RushDays { get; set; }
-        private int QuoteAmount { get; set; }
+        public Desk newDesk = new Desk();
+        public int RushDays { get; set; }
+        public int QuoteAmount { get; set; }
     }
 }
