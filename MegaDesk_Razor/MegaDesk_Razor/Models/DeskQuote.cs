@@ -8,7 +8,7 @@ namespace MegaDesk_Razor.Models
 {
     public class DeskQuote
     {
-        public int ID { get; set; }
+        public int DeskQuoteID { get; set; }
         public int DeskID { get; set; }
 
         public string CustomerName { get; set; }

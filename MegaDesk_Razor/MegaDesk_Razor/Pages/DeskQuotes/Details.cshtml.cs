@@ -27,7 +27,7 @@ namespace MegaDesk_Razor.Pages.DeskQuotes
                 return NotFound();
             }
 
-            DeskQuote = await _context.DeskQuote.FirstOrDefaultAsync(m => m.ID == id);
+            DeskQuote = await _context.DeskQuote.FirstOrDefaultAsync(m => m.DeskQuoteID == id);
 
             if (DeskQuote == null)
             {

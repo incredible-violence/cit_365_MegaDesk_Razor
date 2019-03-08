@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MegaDesk_Razor.Migrations
 {
     [DbContext(typeof(MegaDesk_RazorContext))]
-    [Migration("20190307065532_Initial")]
+    [Migration("20190308043335_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,7 +23,7 @@ namespace MegaDesk_Razor.Migrations
 
             modelBuilder.Entity("MegaDesk_Razor.Models.DeskQuote", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("DeskQuoteID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -37,7 +37,7 @@ namespace MegaDesk_Razor.Migrations
 
                     b.Property<int>("RushDays");
 
-                    b.HasKey("ID");
+                    b.HasKey("DeskQuoteID");
 
                     b.ToTable("DeskQuote");
                 });

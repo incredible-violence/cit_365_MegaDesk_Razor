@@ -29,7 +29,7 @@ namespace MegaDesk_Razor.Pages.DeskQuotes
                 return NotFound();
             }
 
-            DeskQuote = await _context.DeskQuote.FirstOrDefaultAsync(m => m.ID == id);
+            DeskQuote = await _context.DeskQuote.FirstOrDefaultAsync(m => m.DeskQuoteID == id);
 
             if (DeskQuote == null)
             {
@@ -53,7 +53,7 @@ namespace MegaDesk_Razor.Pages.DeskQuotes
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!DeskQuoteExists(DeskQuote.ID))
+                if (!DeskQuoteExists(DeskQuote.DeskQuoteID))
                 {
                     return NotFound();
                 }
@@ -68,7 +68,7 @@ namespace MegaDesk_Razor.Pages.DeskQuotes
 
         private bool DeskQuoteExists(int id)
         {
-            return _context.DeskQuote.Any(e => e.ID == id);
+            return _context.DeskQuote.Any(e => e.DeskQuoteID == id);
         }
     }
 }

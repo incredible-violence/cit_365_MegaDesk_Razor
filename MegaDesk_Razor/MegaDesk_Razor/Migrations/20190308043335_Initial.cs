@@ -12,7 +12,7 @@ namespace MegaDesk_Razor.Migrations
                 name: "DeskQuote",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
+                    DeskQuoteID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DeskID = table.Column<int>(nullable: false),
                     CustomerName = table.Column<string>(nullable: true),
@@ -22,7 +22,7 @@ namespace MegaDesk_Razor.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DeskQuote", x => x.ID);
+                    table.PrimaryKey("PK_DeskQuote", x => x.DeskQuoteID);
                 });
         }
 

@@ -21,7 +21,7 @@ namespace MegaDesk_Razor.Migrations
 
             modelBuilder.Entity("MegaDesk_Razor.Models.DeskQuote", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("DeskQuoteID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -35,7 +35,7 @@ namespace MegaDesk_Razor.Migrations
 
                     b.Property<int>("RushDays");
 
-                    b.HasKey("ID");
+                    b.HasKey("DeskQuoteID");
 
                     b.ToTable("DeskQuote");
                 });

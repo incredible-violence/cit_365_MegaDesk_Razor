@@ -9,7 +9,7 @@ namespace MegaDesk_Razor.Models
 {
     public class Desk
     {
-        public int ID { get; set; }
+        public int DeskID { get; set; }
 
         [Display(Name = "Quote Date")]
         [DataType(DataType.Date)]
