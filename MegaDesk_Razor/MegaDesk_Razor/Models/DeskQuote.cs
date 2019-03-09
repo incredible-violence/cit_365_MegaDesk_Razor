@@ -30,6 +30,7 @@ namespace MegaDesk_Razor.Models
         [Display(Name = "Customer Name")]
         [Required]
         public string CustomerName { get; set; }
+        [Display(Name = "Order Date")]
         [DataType(DataType.Date)]
         [Required]
         public DateTime OrderDate { get; set; }
