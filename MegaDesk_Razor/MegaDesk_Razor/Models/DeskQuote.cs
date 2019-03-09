@@ -30,6 +30,7 @@ namespace MegaDesk_Razor.Models
         [Display(Name = "Customer Name")]
         [Required]
         public string CustomerName { get; set; }
+
         [Display(Name = "Order Date")]
         [DataType(DataType.Date)]
         [Required]
@@ -39,20 +40,26 @@ namespace MegaDesk_Razor.Models
         [Display(Name = "Rush Days")]
         [Required]
         public int RushDays { get; set; }
+
         [Display(Name = "Drawers")]
         [Required]
         public int Drawers { get; set; }
+
         [Display(Name = "Material")]
         [Required]
+        [EnumDataType(typeof(Material))]
         public Material deskMaterial { get; set; }
+
         [Display(Name = "Width")]
         [Range(24,96)]
         [Required]
         public int Width { get; set; }
+
         [Display(Name = "Length")]
         [Range(12,48)]
         [Required]
         public int Length { get; set; }
+
         [Display(Name = "Total Cost")]
         [Required]
         public int QuoteTotal { get; set; }
