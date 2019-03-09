@@ -39,6 +39,21 @@ namespace MegaDesk_Razor.Models
         Seven = 350
     };
 
+    public enum RushDays
+    {
+        [Display(Name = "No Rush")]
+        None = 0,
+
+        [Display(Name = "3 Days")]
+        ThreeDay = 3,
+        
+        [Display(Name = "5 Days")]
+        FiveDay = 5,
+        
+        [Display(Name = "7 Days")]
+        SevenDay = 7
+    };
+
     public class DeskQuote
     {
         // primary key for database
@@ -57,7 +72,8 @@ namespace MegaDesk_Razor.Models
         // desk variables
         [Display(Name = "Rush Days")]
         [Required]
-        public int RushDays { get; set; }
+        [EnumDataType(typeof(RushDays))]
+        public RushDays RushDays { get; set; }
 
         [Display(Name = "Drawers")]
         [Required]
@@ -97,11 +113,12 @@ namespace MegaDesk_Razor.Models
                 return Width * Length;
             }
         }
-        private int TotalCost
+        public int TotalCost
         {
             get
             {
-                int quoteTotal = CalculateQuoteTotal(SurfaceArea, RushDays, (int)DeskMaterial);
+                //int quoteTotal = CalculateQuoteTotal(SurfaceArea, (int)Rush, (int)DeskMaterial);
+                int quoteTotal = PRICE_BASE + DrawerCost() + SurfaceArea + (int)RushDays+ (int)DeskMaterial;
                 return quoteTotal;
             }
 
@@ -115,13 +132,12 @@ namespace MegaDesk_Razor.Models
         }
 
         // FUNCTIONS
-        private int CalculateQuoteTotal(int surfaceArea, int rushDays, int matCost)
+       /* private int CalculateQuoteTotal(int surfaceArea, int rushDays, int matCost)
         {
-            return PRICE_BASE + DrawerCost()
-                + matCost
+            return PRICE_BASE + DrawerCost()+ matCost
                 + RushCost(surfaceArea, rushDays) + SurfaceAreaCost(surfaceArea);
         }
-
+        */
         // surface area cost calculation
         private int SurfaceAreaCost(int size)
         {
