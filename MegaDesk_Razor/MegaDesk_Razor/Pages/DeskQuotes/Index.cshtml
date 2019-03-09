@@ -10,17 +10,31 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+<form>
+    <p>
+        Enter quote name: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+     
+
+
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
+
             <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].DeskID)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.QuoteName"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.DeskQuote[0].CustomerName)
+                </a>
+
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].CustomerName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].OrderDate)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.DeskQuote[0].OrderDate)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].RushDays)
@@ -28,33 +42,56 @@
             <th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].QuoteAmount)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].DeskID)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.DeskQuote) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeskID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CustomerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RushDays)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QuoteAmount)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.DeskQuoteID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.DeskQuoteID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.DeskQuoteID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.DeskQuote)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeskID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RushDays)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuoteAmount)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.DeskQuoteID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.DeskQuoteID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.DeskQuoteID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+@{
+    var prevDisabled = !Model.DeskQuote.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.DeskQuote.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.DeskQuote.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.DeskQuote.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
