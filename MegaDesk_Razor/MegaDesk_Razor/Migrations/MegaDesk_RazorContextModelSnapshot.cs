@@ -25,15 +25,22 @@ namespace MegaDesk_Razor.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CustomerName");
+                    b.Property<string>("CustomerName")
+                        .IsRequired();
 
-                    b.Property<int>("DeskID");
+                    b.Property<int>("Drawers");
+
+                    b.Property<int>("Length");
 
                     b.Property<DateTime>("OrderDate");
 
-                    b.Property<int>("QuoteAmount");
+                    b.Property<int>("QuoteTotal");
 
                     b.Property<int>("RushDays");
+
+                    b.Property<int>("Width");
+
+                    b.Property<int>("deskMaterial");
 
                     b.HasKey("DeskQuoteID");
 

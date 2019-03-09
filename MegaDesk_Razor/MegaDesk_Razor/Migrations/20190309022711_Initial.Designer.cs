@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MegaDesk_Razor.Migrations
 {
     [DbContext(typeof(MegaDesk_RazorContext))]
-    [Migration("20190308043335_Initial")]
+    [Migration("20190309022711_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,15 +27,22 @@ namespace MegaDesk_Razor.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CustomerName");
+                    b.Property<string>("CustomerName")
+                        .IsRequired();
 
-                    b.Property<int>("DeskID");
+                    b.Property<int>("Drawers");
+
+                    b.Property<int>("Length");
 
                     b.Property<DateTime>("OrderDate");
 
-                    b.Property<int>("QuoteAmount");
+                    b.Property<int>("QuoteTotal");
 
                     b.Property<int>("RushDays");
+
+                    b.Property<int>("Width");
+
+                    b.Property<Material>("deskMaterial");
 
                     b.HasKey("DeskQuoteID");
 

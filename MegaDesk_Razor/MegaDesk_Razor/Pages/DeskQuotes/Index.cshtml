@@ -14,9 +14,6 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].DeskID)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].CustomerName)
             </th>
             <th>
@@ -26,7 +23,19 @@
                 @Html.DisplayNameFor(model => model.DeskQuote[0].RushDays)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].QuoteAmount)
+                @Html.DisplayNameFor(model => model.DeskQuote[0].Drawers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].deskMaterial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].Width)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].Length)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].QuoteTotal)
             </th>
             <th></th>
         </tr>
@@ -34,9 +43,6 @@
     <tbody>
 @foreach (var item in Model.DeskQuote) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeskID)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CustomerName)
             </td>
@@ -47,7 +53,19 @@
                 @Html.DisplayFor(modelItem => item.RushDays)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.QuoteAmount)
+                @Html.DisplayFor(modelItem => item.Drawers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.deskMaterial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Width)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Length)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuoteTotal)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.DeskQuoteID">Edit</a> |

@@ -1,4 +1,5 @@
 ﻿using System;
+using MegaDesk_Razor.Models;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
@@ -14,11 +15,14 @@ namespace MegaDesk_Razor.Migrations
                 {
                     DeskQuoteID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DeskID = table.Column<int>(nullable: false),
-                    CustomerName = table.Column<string>(nullable: true),
+                    CustomerName = table.Column<string>(nullable: false),
                     OrderDate = table.Column<DateTime>(nullable: false),
                     RushDays = table.Column<int>(nullable: false),
-                    QuoteAmount = table.Column<int>(nullable: false)
+                    Drawers = table.Column<int>(nullable: false),
+                    deskMaterial = table.Column<Material>(nullable: false),
+                    Width = table.Column<int>(nullable: false),
+                    Length = table.Column<int>(nullable: false),
+                    QuoteTotal = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
