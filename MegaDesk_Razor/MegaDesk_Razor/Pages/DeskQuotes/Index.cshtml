@@ -10,14 +10,31 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+<form>
+    <p>
+        Enter quote name: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+
+
+
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
+
             <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].CustomerName)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.QuoteName"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.DeskQuote[0].CustomerName)
+                </a>
+
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].OrderDate)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.DeskQuote[0].OrderDate)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].RushDays)
@@ -36,6 +53,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DeskQuote[0].QuoteTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeskQuote[0].DeskID)
             </th>
             <th></th>
         </tr>
@@ -76,3 +96,22 @@
 }
     </tbody>
 </table>
+@{
+    var prevDisabled = !Model.DeskQuote.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.DeskQuote.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.DeskQuote.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.DeskQuote.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
