@@ -79,6 +79,13 @@ namespace MegaDesk_Razor.Models
             }
 
         }
+        private int MatCost
+        {
+            get
+            {
+                return (int)deskMaterial;
+            }
+        }
 
         // FUNCTIONS
         private int CalculateQuoteTotal(int surfaceArea, int rushDays, int matCost)
