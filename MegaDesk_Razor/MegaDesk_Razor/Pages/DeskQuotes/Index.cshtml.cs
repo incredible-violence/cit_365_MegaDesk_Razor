@@ -50,8 +50,8 @@ namespace MegaDesk_Razor.Pages.DeskQuotes
             CurrentFilter = SearchString;
 
             IQueryable<string> nameQuery = from n in _context.DeskQuote
-                                            orderby n.CustomerName
-                                            select n.CustomerName;
+                                           orderby n.CustomerName
+                                           select n.CustomerName;
 
             var quotes = from n in _context.DeskQuote
                          select n;
@@ -59,7 +59,7 @@ namespace MegaDesk_Razor.Pages.DeskQuotes
             switch (sortOrder)
             {
                 case "name_desc":
-                    quotes= quotes.OrderByDescending(n => n.CustomerName);
+                    quotes = quotes.OrderByDescending(n => n.CustomerName);
                     break;
                 case "Date":
                     quotes = quotes.OrderBy(n => n.OrderDate);

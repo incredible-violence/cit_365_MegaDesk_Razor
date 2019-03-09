@@ -28,6 +28,8 @@ namespace MegaDesk_Razor.Migrations
                     b.Property<string>("CustomerName")
                         .IsRequired();
 
+                    b.Property<int>("DeskMaterial");
+
                     b.Property<int>("Drawers");
 
                     b.Property<int>("Length");
@@ -39,8 +41,6 @@ namespace MegaDesk_Razor.Migrations
                     b.Property<int>("RushDays");
 
                     b.Property<int>("Width");
-
-                    b.Property<int>("deskMaterial");
 
                     b.HasKey("DeskQuoteID");
 
