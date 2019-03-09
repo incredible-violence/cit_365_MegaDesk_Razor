@@ -54,6 +54,7 @@ namespace MegaDesk_Razor.Models
         [Required]
         public int Length { get; set; }
         [Display(Name = "Total Cost")]
+        [Required]
         public int QuoteTotal { get; set; }
 
         // private constant variables

@@ -23,6 +23,11 @@ namespace MegaDesk_Razor.Pages.DeskQuotes
             return Page();
         }
 
+        public async Task OnGetAsync()
+        {
+            // logic for building quote price based on other text input fields
+        }
+
         [BindProperty]
         public DeskQuote DeskQuote { get; set; }
 
