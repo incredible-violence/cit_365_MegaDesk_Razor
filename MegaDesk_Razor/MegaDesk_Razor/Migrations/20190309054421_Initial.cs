@@ -1,5 +1,4 @@
 ﻿using System;
-using MegaDesk_Razor.Models;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
@@ -19,7 +18,7 @@ namespace MegaDesk_Razor.Migrations
                     OrderDate = table.Column<DateTime>(nullable: false),
                     RushDays = table.Column<int>(nullable: false),
                     Drawers = table.Column<int>(nullable: false),
-                    deskMaterial = table.Column<Material>(nullable: false),
+                    DeskMaterial = table.Column<int>(nullable: false),
                     Width = table.Column<int>(nullable: false),
                     Length = table.Column<int>(nullable: false),
                     QuoteTotal = table.Column<int>(nullable: false)

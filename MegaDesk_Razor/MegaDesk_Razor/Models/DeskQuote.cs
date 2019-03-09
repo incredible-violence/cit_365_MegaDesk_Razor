@@ -44,7 +44,7 @@ namespace MegaDesk_Razor.Models
         public int Drawers { get; set; }
         [Display(Name = "Material")]
         [Required]
-        public Material deskMaterial { get; set; }
+        public Material DeskMaterial { get; set; }
         [Display(Name = "Width")]
         [Range(24,96)]
         [Required]
@@ -75,7 +75,7 @@ namespace MegaDesk_Razor.Models
         {
             get
             {
-                int quoteTotal = CalculateQuoteTotal(SurfaceArea, RushDays, (int)deskMaterial);
+                int quoteTotal = CalculateQuoteTotal(SurfaceArea, RushDays, (int)DeskMaterial);
                 return quoteTotal;
             }
 
@@ -84,7 +84,7 @@ namespace MegaDesk_Razor.Models
         {
             get
             {
-                return (int)deskMaterial;
+                return (int)DeskMaterial;
             }
         }
 

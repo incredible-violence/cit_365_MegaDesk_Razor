@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MegaDesk_Razor.Migrations
 {
     [DbContext(typeof(MegaDesk_RazorContext))]
-    [Migration("20190309022711_Initial")]
+    [Migration("20190309054421_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,6 +30,8 @@ namespace MegaDesk_Razor.Migrations
                     b.Property<string>("CustomerName")
                         .IsRequired();
 
+                    b.Property<int>("DeskMaterial");
+
                     b.Property<int>("Drawers");
 
                     b.Property<int>("Length");
@@ -41,8 +43,6 @@ namespace MegaDesk_Razor.Migrations
                     b.Property<int>("RushDays");
 
                     b.Property<int>("Width");
-
-                    b.Property<Material>("deskMaterial");
 
                     b.HasKey("DeskQuoteID");
 
