@@ -21,6 +21,24 @@ namespace MegaDesk_Razor.Models
         Pine = 50
     };
 
+    public enum Drawers
+    {
+        [Display(Name = "1 Drawer")]
+        One = 50,
+        [Display(Name = "2 Drawers")]
+        Two = 100,
+        [Display(Name = "3 Drawers")]
+        Three = 150,
+        [Display(Name = "4 Drawers")]
+        Four = 200,
+        [Display(Name = "5 Drawers")]
+        Five = 250,
+        [Display(Name = "6 Drawers")]
+        Six = 300,
+        [Display(Name = "7 Drawers")]
+        Seven = 350
+    };
+
     public class DeskQuote
     {
         // primary key for database
@@ -43,7 +61,8 @@ namespace MegaDesk_Razor.Models
 
         [Display(Name = "Drawers")]
         [Required]
-        public int Drawers { get; set; }
+        [EnumDataType(typeof(Drawers))]
+        public Drawers Drawers { get; set; }
 
         [Display(Name = "Material")]
         [Required]
@@ -98,7 +117,8 @@ namespace MegaDesk_Razor.Models
         // FUNCTIONS
         private int CalculateQuoteTotal(int surfaceArea, int rushDays, int matCost)
         {
-            return PRICE_BASE + DrawerCost() + matCost
+            return PRICE_BASE + DrawerCost()
+                + matCost
                 + RushCost(surfaceArea, rushDays) + SurfaceAreaCost(surfaceArea);
         }
 
@@ -115,9 +135,9 @@ namespace MegaDesk_Razor.Models
         // calculate cost of drawers
         private int DrawerCost()
         {
-            return Drawers * PRICE_DRAWER;
+            return (int)Drawers;
         }
-
+        
         // Calculate Rush Cost
         private int RushCost(int surfaceArea, int days)
         {
