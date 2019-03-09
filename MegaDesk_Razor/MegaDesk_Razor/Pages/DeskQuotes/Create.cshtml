@@ -1,6 +1,9 @@
 ﻿@page
 @model MegaDesk_Razor.Pages.DeskQuotes.CreateModel
-
+@{ 
+    Model.DeskQuote = new Models.DeskQuote();
+    Model.DeskQuote.OrderDate = DateTime.Now;
+}
 @{
     ViewData["Title"] = "Create";
 }
