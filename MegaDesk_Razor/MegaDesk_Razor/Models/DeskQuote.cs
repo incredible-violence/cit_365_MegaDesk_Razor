@@ -48,7 +48,7 @@ namespace MegaDesk_Razor.Models
         [Display(Name = "Material")]
         [Required]
         [EnumDataType(typeof(Material))]
-        public Material deskMaterial { get; set; }
+        public Material DeskMaterial { get; set; }
 
         [Display(Name = "Width")]
         [Range(24,96)]
@@ -82,7 +82,7 @@ namespace MegaDesk_Razor.Models
         {
             get
             {
-                int quoteTotal = CalculateQuoteTotal(SurfaceArea, RushDays, (int)deskMaterial);
+                int quoteTotal = CalculateQuoteTotal(SurfaceArea, RushDays, (int)DeskMaterial);
                 return quoteTotal;
             }
 
@@ -91,7 +91,7 @@ namespace MegaDesk_Razor.Models
         {
             get
             {
-                return (int)deskMaterial;
+                return (int)DeskMaterial;
             }
         }
 
