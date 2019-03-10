@@ -34,6 +34,7 @@ namespace MegaDesk_Razor.Pages.DeskQuotes
             }
 
             _context.DeskQuote.Add(DeskQuote);
+            DeskQuote.QuoteTotal = DeskQuote.TotalCost;
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
