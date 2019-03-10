@@ -1,73 +1,67 @@
 ﻿@page
 @model MegaDesk_Razor.Pages.DeskQuotes.CreateModel
+@using MegaDesk_Razor.Models
 @{
     Model.DeskQuote = new Models.DeskQuote();
     Model.DeskQuote.OrderDate = DateTime.Now;
 }
-@using MegaDesk_Razor.Models
 @{
     ViewData["Title"] = "Create";
 }
 
-<h2>Create a Quote</h2>
-
+<h1 class="text-center" style="margin-bottom: 30px">Create a Quote</h1>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+<div class="col-md-offset-2 col-md-8">
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
                 <label asp-for="DeskQuote.CustomerName" class="control-label"></label>
                 <input asp-for="DeskQuote.CustomerName" class="form-control" />
                 <span asp-validation-for="DeskQuote.CustomerName" class="text-danger"></span>
             </div>
-            <div class="form-group">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="DeskQuote.Width" class="control-label"></label>
+                <input asp-for="DeskQuote.Width" type="number" min="24" max="96" step="1" class="form-control" />
+                <span asp-validation-for="DeskQuote.Width" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="DeskQuote.Length" class="control-label"></label>
+                <input asp-for="DeskQuote.Length" type="number" min="12" max="48" step="1" class="form-control" />
+                <span asp-validation-for="DeskQuote.Length" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="DeskQuote.Drawers" class="control-label"></label>
+                <select asp-for="DeskQuote.Drawers" class="form-control" asp-items="Html.GetEnumSelectList<Drawers>()"></select>
+                <span asp-validation-for="DeskQuote.Drawers" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="DeskQuote.DeskMaterial" class="control-label"></label>
+                <select asp-for="DeskQuote.DeskMaterial" class="form-control" asp-items="Html.GetEnumSelectList<Material>()"></select>
+                <span asp-validation-for="DeskQuote.DeskMaterial" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
                 <label asp-for="DeskQuote.OrderDate" class="control-label"></label>
                 <input asp-for="DeskQuote.OrderDate" class="form-control" />
                 <span asp-validation-for="DeskQuote.OrderDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label asp-for="DeskQuote.RushDays" class="control-label"></label>
-                <select asp-for="DeskQuote.RushDays" class="form-control"
-                        asp-items="Html.GetEnumSelectList<RushDays>()"></select>
+                <select asp-for="DeskQuote.RushDays" class="form-control" asp-items="Html.GetEnumSelectList<RushDays>()"></select>
                 <span asp-validation-for="DeskQuote.RushDays" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="DeskQuote.Drawers" class="control-label"></label>
-                <select asp-for="DeskQuote.Drawers" class="form-control"
-                        asp-items="Html.GetEnumSelectList<Drawers>()"></select>
-                <span asp-validation-for="DeskQuote.Drawers" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DeskQuote.DeskMaterial" class="control-label"></label>
-                <select asp-for="DeskQuote.DeskMaterial" class= "form-control" 
-                    asp-items="Html.GetEnumSelectList<Material>()"></select>
-                <span asp-validation-for="DeskQuote.DeskMaterial" class="text-danger"></span>
-            </div>
-            <div class="form-group" >
-                <label asp-for="DeskQuote.Width" class="control-label" ></label>
-                24-96<input asp-for="DeskQuote.Width" type="number" min="24" max="96" step="1" class="form-control" />
-                <span asp-validation-for="DeskQuote.Width" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DeskQuote.Length" class="control-label"></label>
-                12-48<input asp-for="DeskQuote.Length" type="number" min="12" max="48" step="1" class="form-control" />
-                <span asp-validation-for="DeskQuote.Length" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DeskQuote.TotalCost" class="control-label"></label>
-                <input asp-for="DeskQuote.TotalCost" class="form-control"  />
-                <span asp-validation-for="DeskQuote.TotalCost" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-page="Index">Back to List</a>
+        </div>
+        <div class="form-group col-md-4">
+            <a asp-page="Index" class="btn btn-primary">Back</a>
+            <input type="submit" value="Create" class="btn btn-success" />
+        </div>
+    </form>
 </div>
 
 @section Scripts {

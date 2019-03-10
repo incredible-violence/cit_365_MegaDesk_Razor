@@ -35,7 +35,7 @@ namespace MegaDesk_Razor.Pages.DeskQuotes
         {
             // Use LINQ to get list of genres.
             CurrentSort = sortOrder;
-            QuoteSort = String.IsNullOrEmpty(sortOrder) ? "quote_desc" : "";
+            QuoteSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             DateSort = sortOrder == "Date" ? "date_desc" : "Date";
 
             if (SearchString != null)

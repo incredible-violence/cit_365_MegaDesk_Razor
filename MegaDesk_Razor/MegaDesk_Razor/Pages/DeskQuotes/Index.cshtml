@@ -5,111 +5,97 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<form>
-    <p>
-        Enter quote name: <input type="text" asp-for="SearchString" />
-        <input type="submit" value="Filter" />
-
-
-
-    </p>
+<h1 class="text-center" style="margin-bottom: 30px">View Quotes</h1>
+<a asp-page="Create" class="btn btn-primary" style="float: right; margin-top: 20px">Create New Quote</a>
+<form class="form-inline" style="margin-bottom: 10px">
+    <div class="form-group">
+        <div style="margin-right: 15px; font-weight: bold">Customer Name</div>
+        <input type="text" asp-for="SearchString" class="form-control" />
+        <input class="btn btn-primary" type="submit" value="Filter" />
+    </div>
 </form>
-<table class="table">
-    <thead>
-        <tr>
-
-            <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.QuoteName"
-                   asp-route-currentFilter="@Model.CurrentFilter">
-                    @Html.DisplayNameFor(model => model.DeskQuote[0].CustomerName)
-                </a>
-
-            </th>
-            <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort"
-                   asp-route-currentFilter="@Model.CurrentFilter">
-                    @Html.DisplayNameFor(model => model.DeskQuote[0].OrderDate)
-                </a>
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].RushDays)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].Drawers)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].DeskMaterial)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].Width)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].Length)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeskQuote[0].QuoteTotal)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.DeskQuote)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CustomerName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OrderDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RushDays)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Drawers)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DeskMaterial)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Width)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Length)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.QuoteTotal)
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.DeskQuoteID">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.DeskQuoteID">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.DeskQuoteID">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-@{
-    var prevDisabled = !Model.DeskQuote.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.DeskQuote.HasNextPage ? "disabled" : "";
+<div class="form-group" style="padding: 15px 0 35px 0; border-top: 2px solid grey; border-bottom: 2px solid grey; margin-bottom: 0">
+    <div class="col-md-2">
+        <strong>
+            <a asp-page="./Index" asp-route-sortOrder="@Model.QuoteSort" asp-route-currentFilter="@Model.CurrentFilter">
+                @Html.DisplayNameFor(model => model.DeskQuote[0].CustomerName)
+            </a>
+        </strong>
+    </div>
+    <div class="col-md-2">
+        <strong>
+            <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort" asp-route-currentFilter="@Model.CurrentFilter">
+                @Html.DisplayNameFor(model => model.DeskQuote[0].OrderDate)
+            </a>
+        </strong>
+    </div>
+    <div class="col-md-1" style="padding-right: 0">
+        <strong>
+            @Html.DisplayNameFor(model => model.DeskQuote[0].RushDays)
+        </strong>
+    </div>
+    <div class="col-md-1">
+        <strong>
+            @Html.DisplayNameFor(model => model.DeskQuote[0].Drawers)
+        </strong>
+    </div>
+    <div class="col-md-1">
+        <strong>
+            @Html.DisplayNameFor(model => model.DeskQuote[0].DeskMaterial)
+        </strong>
+    </div>
+    <div class="col-md-1">
+        <strong>
+            @Html.DisplayNameFor(model => model.DeskQuote[0].Width)
+        </strong>
+    </div>
+    <div class="col-md-1">
+        <strong>
+            @Html.DisplayNameFor(model => model.DeskQuote[0].Length)
+        </strong>
+    </div>
+    <div class="col-md-2">
+        <strong>
+            @Html.DisplayNameFor(model => model.DeskQuote[0].QuoteTotal)
+        </strong>
+    </div>
+    <div class="col-md-1">&nbsp;<br/><br/></div>
+</div>
+@foreach (var item in Model.DeskQuote)
+{
+<div class="form-group" style="padding: 15px 0 35px 0; border-bottom: 1px solid grey; margin-bottom: 0">
+    <a asp-page="./Details" asp-route-id="@item.DeskQuoteID">
+        <div class="col-md-2">@Html.DisplayFor(modelItem => item.CustomerName)</div>
+        <div class="col-md-2">@Html.DisplayFor(modelItem => item.OrderDate)</div>
+        <div class="col-md-1">@Html.DisplayFor(modelItem => item.RushDays)</div>
+        <div class="col-md-1">@Html.DisplayFor(modelItem => item.Drawers)</div>
+        <div class="col-md-1">@Html.DisplayFor(modelItem => item.DeskMaterial)</div>
+        <div class="col-md-1">@Html.DisplayFor(modelItem => item.Width)</div>
+        <div class="col-md-1">@Html.DisplayFor(modelItem => item.Length)</div>
+        <div class="col-md-1">@Html.DisplayFor(modelItem => item.QuoteTotal)</div>
+        <div class="col-md-2">
+            <a asp-page="./Delete" asp-route-id="@item.DeskQuoteID" class="btn btn-danger btn-sm pull-right" style="margin-left: 5px; padding: 2px 8px 2px 8px">Delete</a>
+            <a asp-page="./Edit" asp-route-id="@item.DeskQuoteID" class="btn btn-primary btn-sm pull-right" style="padding: 2px 8px 2px 8px">Edit</a>
+        </div>
+    </a>
+</div>
 }
+    @{
+        var prevDisabled = !Model.DeskQuote.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.DeskQuote.HasNextPage ? "disabled" : "";
+    }
 
-<a asp-page="./Index"
-   asp-route-sortOrder="@Model.CurrentSort"
-   asp-route-pageIndex="@(Model.DeskQuote.PageIndex - 1)"
-   asp-route-currentFilter="@Model.CurrentFilter"
-   class="btn btn-default @prevDisabled">
-    Previous
-</a>
-<a asp-page="./Index"
-   asp-route-sortOrder="@Model.CurrentSort"
-   asp-route-pageIndex="@(Model.DeskQuote.PageIndex + 1)"
-   asp-route-currentFilter="@Model.CurrentFilter"
-   class="btn btn-default @nextDisabled">
-    Next
-</a>
+    <a asp-page="./Index" style="margin-top: 20px"
+       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-pageIndex="@(Model.DeskQuote.PageIndex - 1)"
+       asp-route-currentFilter="@Model.CurrentFilter"
+       class="btn btn-primary @prevDisabled">
+        Previous
+    </a>
+    <a asp-page="./Index" style="margin-top: 20px"
+       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-pageIndex="@(Model.DeskQuote.PageIndex + 1)"
+       asp-route-currentFilter="@Model.CurrentFilter"
+       class="btn btn-primary @nextDisabled">
+        Next
+    </a>

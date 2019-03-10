@@ -5,63 +5,62 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>DeskQuote</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
+<h1 class="text-center" style="margin-bottom: 30px">Desk Quote Details</h1>
+<hr />
+<div class="col-md-offset-4 col-md-4">
+    <dl class="row">
+        <dt class="col-sm-5">
             @Html.DisplayNameFor(model => model.DeskQuote.CustomerName)
         </dt>
-        <dd>
+        <dd class="col-sm-7">
             @Html.DisplayFor(model => model.DeskQuote.CustomerName)
         </dd>
-        <dt>
+        <dt class="col-sm-5">
             @Html.DisplayNameFor(model => model.DeskQuote.OrderDate)
         </dt>
-        <dd>
+        <dd class="col-sm-7">
             @Html.DisplayFor(model => model.DeskQuote.OrderDate)
         </dd>
-        <dt>
+        <dt class="col-sm-5">
             @Html.DisplayNameFor(model => model.DeskQuote.RushDays)
         </dt>
-        <dd>
+        <dd class="col-sm-7">
             @Html.DisplayFor(model => model.DeskQuote.RushDays)
         </dd>
-        <dt>
+        <dt class="col-sm-5">
             @Html.DisplayNameFor(model => model.DeskQuote.Drawers)
         </dt>
-        <dd>
+        <dd class="col-sm-7">
             @Html.DisplayFor(model => model.DeskQuote.Drawers)
         </dd>
-        <dt>
+        <dt class="col-sm-5">
             @Html.DisplayNameFor(model => model.DeskQuote.DeskMaterial)
         </dt>
-        <dd>
+        <dd class="col-sm-7">
             @Html.DisplayFor(model => model.DeskQuote.DeskMaterial)
         </dd>
-        <dt>
+        <dt class="col-sm-5">
             @Html.DisplayNameFor(model => model.DeskQuote.Width)
         </dt>
-        <dd>
+        <dd class="col-sm-7">
             @Html.DisplayFor(model => model.DeskQuote.Width)
         </dd>
-        <dt>
+        <dt class="col-sm-5">
             @Html.DisplayNameFor(model => model.DeskQuote.Length)
         </dt>
-        <dd>
+        <dd class="col-sm-7">
             @Html.DisplayFor(model => model.DeskQuote.Length)
         </dd>
-        <dt>
+        <dt class="col-sm-5">
             @Html.DisplayNameFor(model => model.DeskQuote.QuoteTotal)
         </dt>
-        <dd>
+        <dd class="col-sm-7">
             @Html.DisplayFor(model => model.DeskQuote.QuoteTotal)
         </dd>
     </dl>
+    <div>
+        <a asp-page="./Index" class="btn btn-primary">Back</a>
+        <a asp-page="./Edit" asp-route-id="@Model.DeskQuote.DeskQuoteID" class="btn btn-primary">Edit</a>
+    </div>
 </div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.DeskQuote.DeskQuoteID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
-</div>
+    
