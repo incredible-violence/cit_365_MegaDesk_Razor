@@ -46,6 +46,7 @@ namespace MegaDesk_Razor.Pages.DeskQuotes
             }
 
             _context.Attach(DeskQuote).State = EntityState.Modified;
+            DeskQuote.QuoteTotal = DeskQuote.TotalCost;
 
             try
             {

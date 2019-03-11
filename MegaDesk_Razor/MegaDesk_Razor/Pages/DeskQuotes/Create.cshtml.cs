@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MegaDesk_Razor.Models;
 
+
 namespace MegaDesk_Razor.Pages.DeskQuotes
 {
     public class CreateModel : PageModel
@@ -34,6 +35,7 @@ namespace MegaDesk_Razor.Pages.DeskQuotes
             }
 
             _context.DeskQuote.Add(DeskQuote);
+            DeskQuote.QuoteTotal = DeskQuote.TotalCost;
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
